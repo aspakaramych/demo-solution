@@ -3,6 +3,7 @@ using DemoSolution.Application.Abstractions;
 using DemoSolution.Application.Behaviors;
 using DemoSolution.Application.Orders;
 using DemoSolution.Infrastructure;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,10 +22,9 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+
+app.MapOpenApi();
+app.MapScalarApiReference();
 
 app.UseExceptionHandler();
 app.MapControllers();
